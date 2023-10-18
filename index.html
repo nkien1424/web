@@ -13,13 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Martian+Mono&family=Open+Sans&family=Poppins&family=Roboto&display=swap"
         rel="stylesheet">
 
-        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
-
-        <!-- jQuery library -->
-        <script src="bootstrap-3.3.7-dist/js/jquery-3.2.1.min.js"></script>
-    
-        <!-- Latest compiled JavaScript -->
-        <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+            
         <script src="homepage.js"></script>
 </head>
 
@@ -71,10 +65,11 @@
     </div>
     <div id="kien" >
         <div class="menu-class-cafe">
-                <button class="all">All</button>
-                <button class="cafe">Coffee</button>
-                <button class="ts">Mike Tea</button>
-                <button class="hoaqua">Juice</button>            
+            
+                <button type="all" class="active">All</button>
+                <button type="cafe">Coffee</button>
+                <button type="ts">Mike Tea</button>
+                <button type="hoaqua">Juice</button>            
         </div>
         <div id="product">
             <article class="cafe">
@@ -212,17 +207,17 @@ let count = {
             ts: document.querySelectorAll('.ts').length,
             coktail: document.querySelectorAll('.coktail').length,
             hoaqua: document.querySelectorAll('.hoaqua').length,
-            all: document.querySelectorAll('article').length
+            all: document.querySelectorAll('article img').length
         };
         
         document.querySelectorAll('.menu-class-cafe button').forEach(button => {
             
-            let className = button.getAttribute('class');
+            let className = button.getAttribute('type');
             if(className =='all'){
             let countText = `<sup>${count[className]}</sup>`;
             button.innerHTML +=  countText;
             }else {
-                let countText = `<sup>${count[className]-1}</sup>`;
+                let countText = `<sup>${count[className]}</sup>`;
             button.innerHTML +=  countText;
             }
         });
@@ -239,9 +234,17 @@ img1List.forEach(item => {
     });
 });
 
+function activeButton(btnActive){
+    btnList.forEach(btn=>{
+        btn.classList.remove('active')
+    })
+    btnActive.classList.add('active')
+}
 btnList.forEach(btn => {
     btn.addEventListener('click', e => {
-        let type = e.currentTarget.getAttribute('class');
+        activeButton(e.currentTarget)
+        let type = e.currentTarget.getAttribute('type');
+        
         let filterData;
         if (type === 'all') {
             filterData = arr;
@@ -249,8 +252,12 @@ btnList.forEach(btn => {
             filterData = arr.filter(food => food.type === type);
         }
         render(filterData);
+        
     });
 });
+
+    
+
 
 function render(list) {
     document.querySelectorAll('article').forEach(article => {
