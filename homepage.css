@@ -233,18 +233,8 @@ footer .footer-get-email .footer-email i{
     font-size: 1.9rem;
     margin-right: 30px;
 }
-.menu-cafe{    
-    padding-left: 100px;
-    padding-top: 1px;   
-}
-.menu-cafe li a{
-    text-decoration: none;
-    font-size: 15px;
-    color: black;
-}
-.menu-cafe li:hover a{
-    border-bottom: 1px solid black;
-}
+
+
 .menu-cafe li {
     display: inline-block;
     padding-left: 25px;
@@ -263,7 +253,9 @@ footer .footer-get-email .footer-email i{
     width: 380px;
     height: 350px;
     padding-top: 15px;
+    border: 3px;
     border-radius: 10px;
+    overflow: hidden;
     padding-bottom: 15px;
 }
 #product article img:hover{
@@ -276,16 +268,19 @@ button {
     margin-left: 35px;
     background-color: #F6F5F3;
     padding: 5px;
-    border: 0px;
+    border:1px solid black;
+    cursor: pointer;
 }
-button:hover{
-    background-color: rgb(194, 183, 183);
-}
+
 .menu-class-cafe {
     padding-left: 94px;
 }
 .hide{
     display: none;
+}
+button.active{
+    background-color: black;
+    color: white;
 }
 
 
